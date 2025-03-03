@@ -100,6 +100,8 @@ def run_linear_regression(m: int, alpha: float, epoch: int):
     print("Predicted w before training: " + str(w_predicted))
     print("Predicted b before training: " + str(b_predicted))
 
+    time_start: int = get_current_milliseconds()
+
     for z in range(epoch):
         print("Training for epoch " + str(z))
         cost_w: float = 0
@@ -120,18 +122,21 @@ def run_linear_regression(m: int, alpha: float, epoch: int):
         print("Predicted b: " + str(b_predicted))
         print()
     
+    time_end: int = get_current_milliseconds()
+    
     print("Predicted w after training: " + str(w_predicted))
     print("Predicted b after training: " + str(b_predicted))
     print("Actual value of w to be expected: " + str(w_actual))
     print("Actual value of b to be expected: " + str(b_actual))
+    print("Time to train: " + str(time_end - time_start) + " milliseconds.")
     print()
 
 
 def main() -> None:
     random_seed: int = 15
-    m: int = 50
+    m: int = 150
     alpha: float = 0.8
-    epoch: int = 200
+    epoch: int = 300
     random.seed(random_seed)
     #run_linear_regression_with_single_variable(m, alpha, epoch)
     run_linear_regression(m, alpha, epoch)
